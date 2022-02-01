@@ -1,0 +1,312 @@
+#
+# Copyright (c) 2020 Nordic Semiconductor ASA
+#
+# SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
+#
+
+menu "MQTT Edge Impulse Demo"
+config MQTT_PUB_TOPIC_PREFIX
+	string "MQTT publish topic"
+	default "ei/demo"
+
+config MQTT_BROKER_HOSTNAME
+	string "MQTT broker hostname"
+	default "broker.hivemq.com"
+
+config MQTT_BROKER_PORT
+	int "MQTT broker port"
+	default 1883
+
+config MQTT_RECONNECT_DELAY_S
+	int "Seconds to delay before attempting to reconnect to the broker."
+	default 60
+
+config LTE_CONNECT_RETRY_DELAY_S
+	int "Seconds to delay before attempting to retry LTE connection."
+	default 120
+
+
+menu "Thingy91 App Customization"
+
+		
+	menu "Inference Settings"
+
+		choice STANDALONE
+			bool "Run Impulse Standalone"
+			default STANDALONE_MODE_NONE
+
+		config STANDALONE_MODE_BUTTON
+			bool "Use Button to activate Standalone"
+
+		config STANDALONE_MODE_AUTO
+			bool "Automatically Start Impulse"
+
+		config STANDALONE_MODE_NONE
+			bool "Use CLI or AT+RUNIMPULSE over console to start Impulse (standard behaviour)"
+			select STANDALONE_FIRMWARE_STANDARD
+
+		endchoice
+
+		config LABEL_THRESHOLD
+			int "Classification threshold %"
+			default 80
+		
+	endmenu
+
+
+		choice 	MODEM_START_MODES
+			bool "LTE MODEM CONNECTION"
+			default  MODEM_MANUAL_CLI
+		
+			config MODEM_MANUAL_CLI
+				bool "Start via CLI using AT+CONNECT (standard behaviour)"
+
+			config MODEM_START_AUTO
+				bool "Start Modem at startup"
+
+			
+		endchoice
+
+	
+
+		menu "Output Setup"
+			choice LABEL_1_1
+				bool "Inference LABEL 1 Primary Output (Visual)"
+				default LABEL_1_1_NONE
+			
+			config LABEL_1_1_RED_LED
+				bool "Red LED"
+						
+			config LABEL_1_1_MAGENTA_LED
+				bool "Magenta LED"
+
+			config LABEL_1_1_GREEN_LED
+				bool "Green LED"
+
+			config LABEL_1_1_YELLOW_LED
+				bool "Yellow LED"
+
+			config LABEL_1_1_BLUE_LED
+				bool "Blue LED"
+			
+			config LABEL_1_1_NONE
+				bool "None"
+			
+			endchoice
+
+			choice LABEL_1_2
+				bool "Inference LABEL 1 Secondary Output (Audio)"
+				default LABEL_1_2_NONE
+						
+			config LABEL_1_2_BUZZER_HIGH
+				bool "Buzzer High Pitch"
+
+			config LABEL_1_2_BUZZER_MID
+				bool "Buzzer Medium Pitch"
+
+			config LABEL_1_2_BUZZER_LOW
+				bool "Buzzer Low Pitch"
+			
+			config LABEL_1_2_NONE
+				bool "None"
+		
+			endchoice
+
+			choice LABEL_2_1
+				bool "Inference LABEL 2 Primary Output (Visual)"
+				default LABEL_2_1_NONE
+			
+			config LABEL_2_1_RED_LED
+				bool "Red LED"
+						
+			config LABEL_2_1_MAGENTA_LED
+				bool "Magenta LED"
+
+			config LABEL_2_1_GREEN_LED
+				bool "Green LED"
+
+			config LABEL_2_1_YELLOW_LED
+				bool "Yellow LED"
+
+			config LABEL_2_1_BLUE_LED
+				bool "Blue LED"
+			
+			config LABEL_2_1_NONE
+				bool "None"
+			
+			endchoice
+
+			choice LABEL_2_2
+				bool "Inference LABEL 2 Secondary Output (Audio)"
+				default LABEL_2_2_NONE
+						
+			config LABEL_2_2_BUZZER_HIGH
+				bool "Buzzer High Pitch"
+
+			config LABEL_2_2_BUZZER_MID
+				bool "Buzzer Medium Pitch"
+
+			config LABEL_2_2_BUZZER_LOW
+				bool "Buzzer Low Pitch"
+			
+			config LABEL_2_2_NONE
+				bool "None"
+		
+			endchoice
+			
+			choice LABEL_3_1
+				bool "Inference LABEL 3 Primary Output (Visual)"
+				default LABEL_3_1_NONE
+			
+			config LABEL_3_1_RED_LED
+				bool "Red LED"
+						
+			config LABEL_3_1_MAGENTA_LED
+				bool "Magenta LED"
+
+			config LABEL_3_1_GREEN_LED
+				bool "Green LED"
+
+			config LABEL_3_1_YELLOW_LED
+				bool "Yellow LED"
+
+			config LABEL_3_1_BLUE_LED
+				bool "Blue LED"
+			
+			config LABEL_3_1_NONE
+				bool "None"
+			
+			endchoice
+
+			choice LABEL_3_2
+				bool "Inference LABEL 3 Secondary Output (Audio)"
+				default LABEL_3_2_NONE
+						
+			config LABEL_3_2_BUZZER_HIGH
+				bool "Buzzer High Pitch"
+
+			config LABEL_3_2_BUZZER_MID
+				bool "Buzzer Medium Pitch"
+
+			config LABEL_3_2_BUZZER_LOW
+				bool "Buzzer Low Pitch"
+			
+			config LABEL_3_2_NONE
+				bool "None"
+		
+			endchoice
+
+			choice LABEL_4_1
+				bool "Inference LABEL 4 Primary Output (Visual)"
+				default LABEL_4_1_NONE
+			
+			config LABEL_4_1_RED_LED
+				bool "Red LED"
+						
+			config LABEL_4_1_MAGENTA_LED
+				bool "Magenta LED"
+
+			config LABEL_4_1_GREEN_LED
+				bool "Green LED"
+
+			config LABEL_4_1_YELLOW_LED
+				bool "Yellow LED"
+
+			config LABEL_4_1_BLUE_LED
+				bool "Blue LED"
+			
+			config LABEL_4_1_NONE
+				bool "None"
+			
+			endchoice
+
+			choice LABEL_4_2
+				bool "Inference LABEL 4 Secondary Output (Audio)"
+				default LABEL_4_2_NONE
+						
+			config LABEL_4_2_BUZZER_HIGH
+				bool "Buzzer High Pitch"
+
+			config LABEL_4_2_BUZZER_MID
+				bool "Buzzer Medium Pitch"
+
+			config LABEL_4_2_BUZZER_LOW
+				bool "Buzzer Low Pitch"
+			
+			config LABEL_4_2_NONE
+				bool "None"
+		
+			endchoice
+		
+			choice LABEL_5_1
+				bool "Inference LABEL 5 Primary Output (Visual)"
+				default LABEL_5_1_NONE
+			
+			config LABEL_5_1_RED_LED
+				bool "Red LED"
+						
+			config LABEL_5_1_MAGENTA_LED
+				bool "Magenta LED"
+
+			config LABEL_5_1_GREEN_LED
+				bool "Green LED"
+
+			config LABEL_5_1_YELLOW_LED
+				bool "Yellow LED"
+
+			config LABEL_5_1_BLUE_LED
+				bool "Blue LED"
+			
+			config LABEL_5_1_NONE
+				bool "None"
+			
+			endchoice
+
+			choice LABEL_5_2
+				bool "Inference LABEL 5 Secondary Output (Audio)"
+				default LABEL_5_2_NONE
+						
+			config LABEL_5_2_BUZZER_HIGH
+				bool "Buzzer High Pitch"
+
+			config LABEL_5_2_BUZZER_MID
+				bool "Buzzer Medium Pitch"
+
+			config LABEL_5_2_BUZZER_LOW
+				bool "Buzzer Low Pitch"
+			
+			config LABEL_5_2_NONE
+				bool "None"
+		
+			endchoice
+
+
+		endmenu
+
+	endmenu
+
+endmenu
+
+
+
+
+config EI_INFERENCE_THREAD_STACK
+	int "Inference thread stack size"
+	default 4096
+	help
+	  "Set the Edge Impulse inference thread stack size."
+
+config EI_INFERENCE_THREAD_PRIO
+	int "Inference thread priority"
+	default 5
+	help
+	  "Set the Edge Impulse inference thread priority. The lower number, the higher prority."
+
+
+menu "Zephyr Kernel"
+source "Kconfig.zephyr"
+endmenu
+
+module = MQTT_EI_DEMO
+module-str = MQTT Edge Impulse Demo
+source "${ZEPHYR_BASE}/subsys/logging/Kconfig.template.log_config"
