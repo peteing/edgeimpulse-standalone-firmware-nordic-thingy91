@@ -130,3 +130,8 @@ To see the output of inference process, make to following steps after deploying 
 ## Dependencies
 * NCS version: **1.7.0**
 * default **Thingy91** (any revision)
+
+##Customizing
+
+You are able to modify various aspects of the firmware using Menuconfig or Guiconfig.
+[For more details read the article](https://peter-ing.medium.com/building-interactive-standalone-edge-impulse-models-with-mqtt-connectivity-on-the-nordic-thingy91-8b88af2af07a)
